@@ -1,0 +1,25 @@
+C64 Color Palette
+
+Black — #000000
+White — #FFFFFF
+Red — #753D3D
+Cyan — #7BB4B4
+Purple — #7D4488
+Green — #5C985C
+Blue — #3433B6
+Yellow — #CBCC7C
+Orange — #7C552F
+Brown — #523E00
+Light Red — #A76F6F
+Dark Grey — #4E4E4E
+Grey — #767676
+Light Green — #9FDB9F
+Light Blue — #6D6CBC
+Light Grey — #A3A3A3
+
+C64 Resolution: 320x200
+X4 = 1280 x 800
+X8 = 2560 x 1600
+**** COMMODORE 64 BASIC V2 ****
+64K RAM SYSTEM  38911 BASIC BYTES FREE
+READY
