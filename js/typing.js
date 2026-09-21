@@ -1,15 +1,14 @@
 // GLOBAL TYPING SPEED (lower = faster)
-const TYPE_SPEED = 40;   // try 30 or 20 if you want it snappier
+const TYPE_SPEED = 40;
 
 
-// Directory listing data
+// Directory listing data (REAL C64 behaviour: READY is NOT part of the grid)
 const directory = [
-    { num: "10", name: "PROJECTS", link: "/projects", type: "PRG" },
+    { num: "10", name: "PROJECTS", link: "/ready.html", type: "PRG" },
     { num: "20", name: "ABOUT ME", link: "/about", type: "PRG" },
     { num: "30", name: "CONTACT", link: "/contact", type: "PRG" },
     { num: "40", name: "GITHUB", link: "https://github.com/JamesOBrien-FED28", type: "PRG" },
-    { num: "", name: " ", link: null, type: "" },
-    { num: "", name: "READY.", link: null, type: "" }
+    { num: "", name: " ", link: null, type: "" } // blank spacer row
 ];
 
 
@@ -55,15 +54,13 @@ function buildDirectory() {
 function typeRow(row, speed = TYPE_SPEED) {
     const spans = [...row.children];
 
-    // Extract text content safely
     const texts = spans.map(span => {
         if (span.firstChild && span.firstChild.nodeName === "A") {
-            return span.firstChild.textContent; // link text
+            return span.firstChild.textContent;
         }
-        return span.textContent; // normal text
+        return span.textContent;
     });
 
-    // Clear text content but keep DOM structure intact
     spans.forEach(span => {
         if (span.firstChild && span.firstChild.nodeName === "A") {
             span.firstChild.textContent = "";
@@ -95,8 +92,6 @@ function typeRow(row, speed = TYPE_SPEED) {
                 const ch = text[charIndex];
                 target.textContent += ch === " " ? "\u00A0" : ch;
                 charIndex++;
-
-                // REAL speed control
                 setTimeout(typeNext, speed);
             } else {
                 spanIndex++;
@@ -110,6 +105,35 @@ function typeRow(row, speed = TYPE_SPEED) {
 }
 
 
+// Print READY. outside the grid (REAL C64 behaviour)
+function printReady() {
+    const container = document.getElementById("dir");
+
+    const ready = document.createElement("div");
+    ready.className = "ready-line";
+    ready.textContent = "READY.";
+
+    container.appendChild(ready);
+
+    return ready;
+}
+
+
+// Add blinking caret after READY.
+function addCaret() {
+    const caretRow = document.getElementById("caret-row");
+    const nameSpan = caretRow.querySelector(".name");
+
+    const caret = document.createElement("span");
+    caret.id = "caret";
+    caret.textContent = "█";
+
+    caretRow.style.visibility = "visible"; // show the row
+    nameSpan.appendChild(caret);
+}
+
+
+
 // Type all rows sequentially
 document.addEventListener("DOMContentLoaded", async () => {
     buildDirectory();
@@ -119,4 +143,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     for (let i = 0; i < rows.length; i++) {
         await typeRow(rows[i], TYPE_SPEED);
     }
+
+    const readyLine = printReady(); // prints READY.
+    addCaret(); // caret goes on the next line
 });
+

@@ -31,16 +31,18 @@ body {
     gap: 0.2rem;
 }
 
+/* 3-column PETSCII-style directory grid */
 .row {
     display: grid;
     grid-template-columns: 3ch 20ch 4ch;
     text-align: left;
     margin-left: 3ch;
-    /* perfect PETSCII alignment */
+    /* matches C64 LIST indentation */
+    position: relative;
+    overflow: hidden;
 }
 
 .num {
-
     text-align: left;
 }
 
@@ -53,7 +55,34 @@ body {
     text-align: left;
 }
 
-.row {
-    position: relative;
-    overflow: hidden;
+/* READY. line (outside grid, like real C64) */
+.ready-line {
+    margin-left: 3ch;
+    /* same indentation as BASIC prompt */
+}
+
+/* Blinking PETSCII cursor */
+#caret {
+    display: inline-block;
+    width: 1ch;
+    animation: blink 0.8s steps(1) infinite;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+#caret-row {
+    margin-left: 0;
+    visibility: hidden;
 }
