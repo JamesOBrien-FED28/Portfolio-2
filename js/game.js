@@ -29,11 +29,11 @@ document.addEventListener("keyup", (e) => {
 function update() {
     // Movement
     if (keys["ArrowLeft"]) {
-        player.vx = -3;
+        player.vx = -6;
         player.facing = "left";   // NEW
     }
     else if (keys["ArrowRight"]) {
-        player.vx = 3;
+        player.vx = 6;
         player.facing = "right";  // NEW
     }
     else {
