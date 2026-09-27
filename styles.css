@@ -12,6 +12,11 @@ body {
     height: 100%;
 }
 
+a {
+    color: #0088FF;
+    text-decoration: none;
+}
+
 .c64screen {
     margin: 5%;
     margin-left: 10%;

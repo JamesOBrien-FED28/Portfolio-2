@@ -4,7 +4,7 @@ const TYPE_SPEED = 40;
 
 // Directory listing data (REAL C64 behaviour: READY is NOT part of the grid)
 const directory = [
-    { num: "10", name: "PROJECTS", link: "/ready.html", type: "PRG" },
+    { num: "10", name: "PROJECTS", link: "/projects.html", type: "PRG" },
     { num: "20", name: "ABOUT ME", link: "/about", type: "PRG" },
     { num: "30", name: "CONTACT", link: "/contact", type: "PRG" },
     { num: "40", name: "GITHUB", link: "https://github.com/JamesOBrien-FED28", type: "PRG" },
